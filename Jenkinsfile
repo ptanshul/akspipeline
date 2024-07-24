@@ -19,7 +19,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    az acr build --resource-group $AKS_RESOURCE_GROUP --registry $ACR_NAME --image $IMAGE_NAME:$IMAGE_TAG 
+                    docker.build("${ACR_NAME}.azurecr.io/${IMAGE_NAME}:${IMAGE_TAG}")
                     
                 }
             }
