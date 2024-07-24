@@ -19,22 +19,13 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("${ACR_NAME}.azurecr.io/${IMAGE_NAME}:${IMAGE_TAG}")
+                    az acr build --resource-group ${AKS_RESOURCE_GROUP} --registry ${ACR_NAME} --image ${IMAGE_NAME}:${IMAGE_TAG} .
+                    
                 }
             }
         }
 
-        stage('Push to ACR') {
-            steps {
-                withCredentials([azureServicePrincipal('Azure_Credentials')]) {
-                    sh """
-                    az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
-                    az acr login --name $ACR_NAME
-                    docker push ${ACR_NAME}.azurecr.io/${IMAGE_NAME}:${IMAGE_TAG}
-                    """
-                }
-            }
-        }
+    
 
         stage('Deploy to AKS') {
             steps {
