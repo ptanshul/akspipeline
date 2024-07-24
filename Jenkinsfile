@@ -6,7 +6,7 @@ pipeline {
         AKS_RESOURCE_GROUP = "cloudrg"
         AKS_CLUSTER_NAME = "cloudaks"
         IMAGE_NAME = "flask-app"
-        IMAGE_TAG = "${BUILD_NUMBER}"
+        IMAGE_TAG = "latest"
     }
 
     stages {
