@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-        ACR_NAME = "yourACRName"
-        AKS_RESOURCE_GROUP = "yourResourceGroup"
-        AKS_CLUSTER_NAME = "yourAKSClusterName"
+        ACR_NAME = "cloudacr"
+        AKS_RESOURCE_GROUP = "cloudrg"
+        AKS_CLUSTER_NAME = "cloudaks"
         IMAGE_NAME = "flask-app"
         IMAGE_TAG = "${BUILD_NUMBER}"
     }
