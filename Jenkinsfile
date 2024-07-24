@@ -35,7 +35,7 @@ pipeline {
                     az aks get-credentials --resource-group $AKS_RESOURCE_GROUP --name $AKS_CLUSTER_NAME
                     
                     sed -i 's|${ACR_NAME}.azurecr.io/${IMAGE_NAME}:.*|${ACR_NAME}.azurecr.io/${IMAGE_NAME}:${IMAGE_TAG}|' kubernetes-deployment.yaml
-                    kubectl apply -f kubernetes-deployment.yaml
+                    kubectl apply -f kubernetes-deployment.yml
                     """
                 }
             }
