@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: flask-app
-        image: cloudacr.azurecr.io/flask-aks-app
+        image: cloudacr.azurecr.io/flask-aks-app:v9
         ports:
         - containerPort: 5000
 ---
